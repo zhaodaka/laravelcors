@@ -1,0 +1,29 @@
+{
+    "name": "zdk/laravel-cors",
+    "description": "laravel cors",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zdktfy",
+            "email": "zdktfy@zhaodaka.cn"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Zdk\\Cors\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers" : [
+                "Zdk\\Cors\\ServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "illuminate/support": "^5.8",
+        "php": "^7.1",
+        "illuminate/http": "^5.8"
+    }
+}
