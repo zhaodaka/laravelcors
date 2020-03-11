@@ -1,5 +1,8 @@
 <h1 align="left"><a href="http://im.zhaodaka.cn/">laravelcors</a></h1>
 
+### 用途
+ 跨域访问的laravel组件
+ 
 ## Requirement
 
 1. PHP >= 7.1
