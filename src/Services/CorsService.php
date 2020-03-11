@@ -12,6 +12,8 @@ class CorsService
     public function __construct(array $options = [])
     {
         $this->options = $options;
+
+        $this->normalizeOptions($options);
     }
 
     private function normalizeOptions(array $options = [])
@@ -42,7 +44,7 @@ class CorsService
         return $this->addActualResponse($request, new Response());
     }
 
-    public function addActualResponse(Request $request, Response $response)
+    public function addActualResponse(Request $request, $response)
     {
         $response->headers->set('Access-Control-Allow-Origin', $request->headers->get('Origin'));
         $response->headers->set('Access-Control-Allow-Methods', $request->headers->get('Access-Control-Request-Headers'));
@@ -105,8 +107,10 @@ class CorsService
 
         $headers = $request->headers->get('Access-Control-Request-Headers');
         $requestHeaders = explode(',', $headers);
+
+        $allowHeaders = array_map('strtoupper', $this->options['allowHeaders']);
         foreach ($requestHeaders as $requestHeader) {
-            if (!in_array($requestHeader, $this->options['allowHeaders'])) {
+            if (!in_array(strtoupper($requestHeader), $allowHeaders)) {
                 return false;
             }
         }
